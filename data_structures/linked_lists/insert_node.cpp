@@ -42,28 +42,28 @@ Node* InsertNth(Node *head, int data, int position)
   // Complete this method only
   // Do not write main function.
   Node* N = new Node();
+  N->data = data;
 
   Node *t = head, *t_old = head;
   int p = 0;
 
   //if the list is empty
-  if(head == NULL){
+  if(head == NULL || position == 0){
+    N->next = head;
     head = N;
-    N->next = NULL;
-    return head;
   }
+  else{
+    //Go to the position while storing a pointer to the previous node too
+    while(t != NULL && p < position){
+       t_old = t;
+       t = t->next;
+       p++;
+    }
 
-  //Go to the position while storing a pointer to the previous node too
-  while(t != NULL && p < position){
-    t_old = t;
-    t = t->next;
-    p++;
+    //Insert the element
+    N->next = t;
+    t_old->next = N;
   }
-
-  //Insert the element
-  N->next = t;
-  t_old->next = N;
-  N->data = data;
 
   return head;
 }
