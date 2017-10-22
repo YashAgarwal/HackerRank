@@ -27,8 +27,6 @@ int main() {
     long t,n;
     cin >> t;
     
-    
-    
     for(long i=0; i<t; i++){
         cin >> n;
         //find the largest prime factor of n
